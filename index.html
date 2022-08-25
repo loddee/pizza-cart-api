@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizaa order cart</title>
+    <link rel="icon" href="icon/faviconLM.ico">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="pizza-cart-api.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+
+
+    <style>
+
+    </style>
+
+
+
+</head>
+
+<body>
+    <div x-data="pizzaCartWithAPIWidget">
+        <div x-text="message"></div>
+        <div x-text="cartId"></div>
+
+        <h2>Pizzas for Order</h2>
+
+        <div>
+            Who is buying the pizzas: <input type="text" x-model="username">
+        </div>
+
+        <strong x-text="pizzas.length"></strong>
+        <div>
+            <div>
+                Cart total: <strong x-text="cart.total"></strong>
+            </div>
+            <div class="carts">
+                <table>
+                    <h3>Shopping Cart</h3>
+                    <tr>
+                        <th>Flavour</th>
+                        <th>Quantity</th>
+                        <th>Add/Remove</th>
+                        <th>Total</th>
+                    </tr>
+                    <template x-for="pizza in cart.pizzas">                
+                    <tr>
+                        <td x-text="pizza.flavour" ></td>
+                        <td x-text="pizza.qty" ></td>
+                        <td>
+                            <button x-on:click="add(pizza)" >+</button>
+                            <button x-on:click="remove(pizza)" >-</button>
+                        </td>
+                        <td x-text="pizza.total" ></td>                            
+                    </tr>
+                </template>
+                    <tr>
+                        <td class="message" x-text="paymentMessage">
+                        </td>
+                        <td>
+                            <label for="input">Payment Amount</label>
+                            <input class="input" type="number" placeholder="Payment Amount" x-model="paymentAmount">
+                            </input>
+                        </td>
+                        <td>
+                            <button x-on:click="pay">Pay</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <table>
+            <template x-for="pizza in pizzas">
+            <tr>
+                <td>
+                    <img x-bind:src="pizzaImage(pizza)" height="30pxss" s alt="">
+                </td>
+                <td x-text="pizza.flavour.toLowerCase()" ></td>
+                <td x-text="pizza.size" ></td>
+                <td x-text="pizza.price" ></td>
+                <td>
+                <button x-on:click="add(pizza)" >Buy</button>
+                </td>
+            </tr>
+        </template>
+        </table>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+body {
+    background-color: darkgray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    background-color: azure;
+    font-family: 'Sacramento', cursive;
+    font-weight: bolder;
+    color: #66BFBF;
+}
+
+.carts {
+    border: 1px sold;
+    background-color: rgb(86, 86, 131);
+    padding: 1em;
+    margin: 4em;
+    width: 50em;
+    text-align: center;
+    position: center;
+}
+
+.button {
+    text-decoration-color: blue;
+}
